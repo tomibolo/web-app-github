@@ -184,7 +184,7 @@ class ContactController extends Controller
 
     /**
     * @SWG\Delete(
-    *   path="/api/concats/{contact_id}",
+    *   path="/api/contacts/{contact_id}",
     *   tags={"Contacts"},
     *   description="Contacts endpoints",
     *   summary="Delete Contact",   
