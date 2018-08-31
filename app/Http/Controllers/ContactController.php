@@ -18,21 +18,21 @@ class ContactController extends Controller
     *   tags={"Contacts"},
     *   description="Contacts endpoints",
     *   summary="Get Contacts",
-    *   @SWG\Parameter( name="page", in="path", description="Set current page", required=false, type="integer",
+    *   @SWG\Parameter( name="page", in="query", description="Set current page", required=false, type="integer",
     *         @SWG\Schema( type="object",
     *             properties={
     *                 @SWG\Property(property="page", type="integer", example="1"),
     *             }
     *         )
     *   ),     
-    *   @SWG\Parameter( name="email", in="path", description="Set email", required=false, type="string",
+    *   @SWG\Parameter( name="email", in="query", description="Set email", required=false, type="string",
     *         @SWG\Schema( type="object",
     *             properties={
     *                 @SWG\Property(property="email", type="string", example="stehr.jessika@yundt.com"),
     *             }
     *         )
     *   ),     
-    *   @SWG\Parameter( name="phone_number", in="path", description="Set ´phone_number", required=false, type="string",
+    *   @SWG\Parameter( name="phone_number", in="query", description="Set ´phone_number", required=false, type="string",
     *         @SWG\Schema( type="object",
     *             properties={
     *                 @SWG\Property(property="phone_number", type="string", example="+541158906356")

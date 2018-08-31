@@ -15,7 +15,7 @@
                 "parameters": [
                     {
                         "name": "page",
-                        "in": "path",
+                        "in": "query",
                         "description": "Set current page",
                         "required": false,
                         "schema": {
