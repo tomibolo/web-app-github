@@ -20,7 +20,8 @@ class CreateContactsTable extends Migration
             $table->text('profile_image')->nullable();
             $table->string('email', 100);
             $table->date('birthdate', 50)->nullable();
-            $table->string('phone_number', 20)->nullable();
+            $table->string('phone_number_work', 20)->nullable();
+            $table->string('phone_number_personal', 20)->nullable();
             $table->timestamps();
         });
     }

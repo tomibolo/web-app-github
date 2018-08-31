@@ -10,7 +10,7 @@ class Contact extends Model
 
     protected $with = ['address'];
 
-    protected $fillable = ['name', 'company', 'profile_image', 'email', 'birthdate', 'phone_number'];
+    protected $fillable = ['name', 'company', 'profile_image', 'email', 'birthdate', 'phone_number_work', 'phone_number_personal'];
 
     protected $hidden = ['created_at', 'updated_at'];
     
@@ -22,6 +22,16 @@ class Contact extends Model
     public function scopeFilters($query,  $request)
     {
         if ($request->has('email')) $query = $query->whereEmail($request->get('email'));
+        if ($request->has('phone_number'))
+        {
+            $query = $query->where(function($q) use ($request)
+                {
+                    $q->orWhere('phone_number_work', 'like', '%'.$request->get('phone_number').'%')
+                    ->orWhere('phone_number_personal', 'like', '%'.$request->get('phone_number').'%');
+                }
+            );
+
+        } 
 
         return $query;
     }
