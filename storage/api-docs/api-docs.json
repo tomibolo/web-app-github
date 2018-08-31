@@ -1,0 +1,470 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "WEB CHALLENGE API DOCUMENTATION",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get Contacts",
+                "description": "Contacts endpoints",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Set current page",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "page": {
+                                    "type": "integer",
+                                    "example": "1"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "integer"
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Set email",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "stehr.jessika@yundt.com"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "path",
+                        "description": "Set \u00b4phone_number",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "phone_number": {
+                                    "type": "string",
+                                    "example": "+541158906356"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/contacts?page=1"
+                                        },
+                                        "last": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/contacts?page=1"
+                                        },
+                                        "prev": {
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "next": {
+                                            "type": "string",
+                                            "example": "null"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "from": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/contacts"
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": "15"
+                                        },
+                                        "to": {
+                                            "type": "integer",
+                                            "example": "4"
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": "4"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Contact"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/contacts ": {
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Create new contact",
+                "description": "Contacts endpoints",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Create new contact",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Tomas"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "X-Company"
+                                        },
+                                        "profile_image": {
+                                            "type": "string",
+                                            "example": "http://www.google.com"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "stehr.jessika@yundt.com"
+                                        },
+                                        "birthdate": {
+                                            "type": "string",
+                                            "example": "2013-04-05"
+                                        },
+                                        "phone_number_work": {
+                                            "type": "string",
+                                            "example": "+5411589063561"
+                                        },
+                                        "phone_number_personal": {
+                                            "type": "string",
+                                            "example": "+5411589063561"
+                                        },
+                                        "address": {
+                                            "type": "object",
+                                            "$ref": "#/definitions/Address"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Contact"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/contacts/{contact_id}": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get Contact",
+                "description": "Contacts endpoints",
+                "parameters": [
+                    {
+                        "name": "contact_id",
+                        "in": "path",
+                        "description": "Get Contact",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "contact_id": {
+                                    "type": "integer",
+                                    "example": "1"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Contact"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Update Contact",
+                "description": "Contacts endpoints",
+                "parameters": [
+                    {
+                        "name": "contact_id",
+                        "in": "path",
+                        "description": "Update contact",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "contact": {
+                                    "type": "integer",
+                                    "example": "1"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Update contact",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Tomas"
+                                },
+                                "company": {
+                                    "type": "string",
+                                    "example": "X-Company"
+                                },
+                                "profile_image": {
+                                    "type": "string",
+                                    "example": "http://www.google.com"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "stehr.jessika@yundt.com"
+                                },
+                                "birthdate": {
+                                    "type": "string",
+                                    "example": "2013-04-05"
+                                },
+                                "phone_number_work": {
+                                    "type": "string",
+                                    "example": "+5411589063561"
+                                },
+                                "phone_number_personal": {
+                                    "type": "string",
+                                    "example": "+5411589063561"
+                                },
+                                "address": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Address"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Contact"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/concats/{contact_id}": {
+            "delete": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Delete Contact",
+                "description": "Contacts endpoints",
+                "parameters": [
+                    {
+                        "name": "contact_id",
+                        "in": "path",
+                        "description": "Delete contact",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "contact_id": {
+                                    "type": "integer",
+                                    "example": "1"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "string",
+                                    "example": "true"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "example": "Kozey Flat"
+                },
+                "state": {
+                    "type": "string",
+                    "example": "Massachusetts"
+                },
+                "number": {
+                    "type": "int",
+                    "example": "40424"
+                },
+                "city": {
+                    "type": "string",
+                    "example": "Bryceshire"
+                }
+            }
+        },
+        "Contact": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "example": "1"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Tomas"
+                },
+                "company": {
+                    "type": "string",
+                    "example": "X-Company"
+                },
+                "profile_image": {
+                    "type": "string",
+                    "example": "http://www.google.com"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "stehr.jessika@yundt.com"
+                },
+                "birthdate": {
+                    "type": "string",
+                    "example": "2013-04-05"
+                },
+                "phone_number_work": {
+                    "type": "string",
+                    "example": "+5411589063561"
+                },
+                "phone_number_personal": {
+                    "type": "string",
+                    "example": "+5411589063561"
+                },
+                "address": {
+                    "type": "object",
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        }
+    },
+    "responses": {
+        "200Contact": {
+            "description": "the basic response",
+            "schema": {
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "$ref": "#/definitions/Contact"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
