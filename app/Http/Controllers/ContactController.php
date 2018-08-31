@@ -80,7 +80,6 @@ class ContactController extends Controller
     *         @SWG\Schema(
     *             type="object",
     *             properties={
-    *                 @SWG\Property(property="data", type="object", properties={
     *                       @SWG\Property(property="name", type="string", example="Tomas"),
     *                       @SWG\Property(property="company", type="string", example="X-Company"),
     *                       @SWG\Property(property="profile_image", type="string", example="http://www.google.com"),
@@ -89,7 +88,6 @@ class ContactController extends Controller
     *                       @SWG\Property(property="phone_number_work", type="string", example="+5411589063561"),
     *                       @SWG\Property(property="phone_number_personal", type="string", example="+5411589063561"),
     *                       @SWG\Property(property="address", type="object", ref="#/definitions/Address")
-    *                 })
     *             }
     *         )
     *   ), 
@@ -154,7 +152,7 @@ class ContactController extends Controller
     *   @SWG\Parameter(
     *     name="body",
     *     in="body",
-    *     description="Update contact",
+    *     description="Create new contact",
     *     required=true,
     *     type="string",
     *         @SWG\Schema(
@@ -170,7 +168,7 @@ class ContactController extends Controller
     *                       @SWG\Property(property="address", type="object", ref="#/definitions/Address")
     *             }
     *         )
-    *   ),
+    *   ), 
     *   @SWG\Response(response=200, description="successful operation",ref="$/responses/200Contact"),
     *   @SWG\Response(response=500, description="internal server error")
     * )

@@ -31,7 +31,7 @@
                     },
                     {
                         "name": "email",
-                        "in": "path",
+                        "in": "query",
                         "description": "Set email",
                         "required": false,
                         "schema": {
@@ -47,7 +47,7 @@
                     },
                     {
                         "name": "phone_number",
-                        "in": "path",
+                        "in": "query",
                         "description": "Set \u00b4phone_number",
                         "required": false,
                         "schema": {
@@ -152,42 +152,37 @@
                         "required": true,
                         "schema": {
                             "properties": {
-                                "data": {
-                                    "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "example": "Tomas"
-                                        },
-                                        "company": {
-                                            "type": "string",
-                                            "example": "X-Company"
-                                        },
-                                        "profile_image": {
-                                            "type": "string",
-                                            "example": "http://www.google.com"
-                                        },
-                                        "email": {
-                                            "type": "string",
-                                            "example": "stehr.jessika@yundt.com"
-                                        },
-                                        "birthdate": {
-                                            "type": "string",
-                                            "example": "2013-04-05"
-                                        },
-                                        "phone_number_work": {
-                                            "type": "string",
-                                            "example": "+5411589063561"
-                                        },
-                                        "phone_number_personal": {
-                                            "type": "string",
-                                            "example": "+5411589063561"
-                                        },
-                                        "address": {
-                                            "type": "object",
-                                            "$ref": "#/definitions/Address"
-                                        }
-                                    },
-                                    "type": "object"
+                                "name": {
+                                    "type": "string",
+                                    "example": "Tomas"
+                                },
+                                "company": {
+                                    "type": "string",
+                                    "example": "X-Company"
+                                },
+                                "profile_image": {
+                                    "type": "string",
+                                    "example": "http://www.google.com"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "stehr.jessika@yundt.com"
+                                },
+                                "birthdate": {
+                                    "type": "string",
+                                    "example": "2013-04-05"
+                                },
+                                "phone_number_work": {
+                                    "type": "string",
+                                    "example": "+5411589063561"
+                                },
+                                "phone_number_personal": {
+                                    "type": "string",
+                                    "example": "+5411589063561"
+                                },
+                                "address": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Address"
                                 }
                             },
                             "type": "object"
@@ -285,7 +280,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Update contact",
+                        "description": "Create new contact",
                         "required": true,
                         "schema": {
                             "properties": {
